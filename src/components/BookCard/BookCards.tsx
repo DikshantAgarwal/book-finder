@@ -9,7 +9,7 @@ const BookCard = (props: { bookData: BookVolumes[], isLoading: Boolean }) => {
 
 
     const handleBook = (id: string) => {
-        navigate(`/book/${id.toString()}`);
+        navigate(`book/${id}`);
     }
     if (!bookData.length) {
         return <h4>Search Books to Display</h4>

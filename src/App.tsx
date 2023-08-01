@@ -4,7 +4,7 @@ import Router from "./pages/router"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/book-finder'>
       <Router />
     </BrowserRouter>
   )

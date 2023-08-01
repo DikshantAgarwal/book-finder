@@ -1,6 +1,6 @@
 {
   "name": "book-finder",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "homepage": "https://DikshantAgarwal.github.io/book-finder",
   "type": "module",
