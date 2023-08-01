@@ -43,12 +43,11 @@ function BookFinder() {
 
     }
     return (
-
-        <div className='bg-[#F2F2F2] w-[100vw] h-auto'>
+        <>
             <h1 className="text-3xl font-bold underline pt-8">BOOK FINDER</h1>
             <Search handleSearchInput={handleSearchInput} handleSearchEvent={handleSearchEvent}></Search>
             <BookCards bookData={bookData} isLoading={isLoading}></BookCards>
-        </div>
+        </>
     )
 }
 
