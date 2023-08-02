@@ -2,11 +2,10 @@
   "name": "book-finder",
   "private": false,
   "version": "0.0.0",
-  "homepage": "https://dikshantagarwal.github.io/book-finder",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
