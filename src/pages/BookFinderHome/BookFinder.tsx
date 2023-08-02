@@ -1,4 +1,6 @@
 
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 import { useState } from 'react';
 import Search from '../../components/search/search';
 import BookCards from '../../components/BookCard/BookCards';
@@ -25,17 +27,22 @@ export interface BookVolumes {
         }
     },
 }
+export interface Volumes {
+    items:BookVolumes[],
+    kind:string,
+    totalItems:number
+}
 function BookFinder() {
     const [searchKeyword, setSearchKeyword] = useState('');
     const [bookData, setBookData] = useState<BookVolumes[]>([]);
-    const [isLoading, setIsLoading] = useState<Boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchKeyword(event.target.value)
     }
     const handleSearchEvent = async () => {
         setIsLoading(true)
         const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q='${searchKeyword}'&key=${API_KEY}`)
-        const data = await response.json();
+        const data = await response.json() as Volumes;
         setIsLoading(false)
         if (data.totalItems) {
             setBookData(data.items);
