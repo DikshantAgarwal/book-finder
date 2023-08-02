@@ -17,7 +17,7 @@ const BookCard = (props: { bookData: BookVolumes[], isLoading: Boolean }) => {
     if (isLoading) {
         return <div>Loading...</div>
     }
-    return <div className='flex  gap-20 border flex-wrap mt-16 px-16 items-center justify-center '>
+    return <div className='flex gap-20 flex-wrap mt-16 px-16 items-center justify-center '>
         {bookData.map((book: BookVolumes) => {
             const { title, authors, publisher, imageLinks } = book?.volumeInfo
             const { id } = book
