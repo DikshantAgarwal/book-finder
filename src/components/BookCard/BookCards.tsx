@@ -1,15 +1,19 @@
 
 import { BookVolumes } from '../../pages/BookFinderHome/BookFinder';
-
+import DefaultBook from '../../assets/book.png';
 import { useNavigate } from "react-router-dom";
-const BookCard = (props: { bookData: BookVolumes[], isLoading: Boolean }) => {
-    let navigate = useNavigate();
+const BookCard = (props: { bookData: BookVolumes[], isLoading: boolean }) => {
+    const navigate = useNavigate();
     const { bookData, isLoading } = props;
 
 
 
     const handleBook = (id: string) => {
         navigate(`book/${id}`);
+    }
+    const handleImageError=(event:{currentTarget:{src:string}})=>{
+        const {currentTarget}=event;
+         currentTarget.src=DefaultBook;
     }
     if (!bookData.length) {
         return <h4>Search Books to Display</h4>
@@ -18,13 +22,14 @@ const BookCard = (props: { bookData: BookVolumes[], isLoading: Boolean }) => {
         return <div>Loading...</div>
     }
     return <div className='flex gap-20 flex-wrap mt-16 px-16 items-center justify-center '>
+      
         {bookData.map((book: BookVolumes) => {
-            const { title, authors, publisher, imageLinks } = book?.volumeInfo
+            const { title, authors, publisher, imageLinks } = book.volumeInfo
             const { id } = book
             return (
                 <div key={book.id} className='flex flex-row w-[350px] h-auto bg-white rounded-lg py-4 drop-shadow-md'>
                     <figure className='relative h-32 w-32 '>
-                        <img className='h-32 w-48 rounded-lg absolute left-2 -top-8 ' src={imageLinks && imageLinks.smallThumbnail} alt='img'></img>
+                        <img className='h-32 w-48 rounded-lg absolute left-2 -top-8 ' src={imageLinks ? imageLinks.smallThumbnail:''} onError={handleImageError}alt='img'></img>
                     </figure>
 
                     <div className='px-4'>
