@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import Search from '../../components/search/search';
 import BookCards from '../../components/BookCard/BookCards';
-import { API_KEY } from '../../Constants/constant';
+import { API_KEY , VITE_API_BASE_URL } from '../../Constants/constant';
 
 
 export interface BookVolumes {
@@ -40,8 +40,8 @@ function BookFinder() {
         setSearchKeyword(event.target.value)
     }
     const handleSearchEvent = async () => {
-        setIsLoading(true)
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q='${searchKeyword}'&key=${API_KEY}`)
+        setIsLoading(true);
+        const response = await fetch(`${VITE_API_BASE_URL}?q=${searchKeyword}&key=${API_KEY}`);
         const data = await response.json() as Volumes;
         setIsLoading(false)
         if (data.totalItems) {
